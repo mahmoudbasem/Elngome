@@ -1192,7 +1192,7 @@ while true do
         searchIndex = searchIndex + 1 -- زيادة ترقيم العنصر
     end
     
-    local choice = gg.choice(displayedChoices, nil, headerStore)
+    local choice = gg.choice(displayedChoices, nil, header)
     
     if choice == nil then
         ex(8)
@@ -1227,7 +1227,7 @@ while true do
     resultIndex = resultIndex + 1
     table.insert(displayedResults, "『" .. resultIndex .. "』〘 رجوع 〙")
 
-    local choice = gg.choice(displayedResults, nil, headerStore)
+    local choice = gg.choice(displayedResults, nil, header)
     if choice then
         if choice == resultIndex then
         else
