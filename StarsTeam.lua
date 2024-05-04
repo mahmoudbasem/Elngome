@@ -63,7 +63,7 @@ msgExs = "💥✨💫 Exclusive By The Stars Team 💫✨💥 \n 💥✨💫 ح�
 urls = {
     '',
     'https://bit.ly/3TWWJCD',
-    'https://d.apkpure.com/b/APK/com.google.android.gm?version=latest',
+    'https://bit.ly/3QTD0TR',
     'https://bit.ly/3VZnj0J',
     'https://bit.ly/3UdXQiP',
     'https://bit.ly/3VZmUvf',
@@ -1592,7 +1592,7 @@ if isPackageInstalled then
 gg.alert("                      ⚠️ انت لا تستخدم الجيم جاردن الخاص بفريق النجوم. ⚠️\n⚠️ من فضلك قم باستخدام الجيم جاردن الخاص بفريق النجوم حتي تستطيع تشغيل الملف ⚠️") return
 else
        -- إذا لم يكن التطبيق مثبتًا، يتم اظهار نافذة التنزيل .
-local Url = "https://dl.dropboxusercontent.com/scl/fi/jttirbe5k0ncnjqwrwesv/base.apk?rlkey=pom09n9aybqqirz7mc3mx1ndp&dl=0"
+local Url = "https://bit.ly/3QTD0TR"
 local Name = "Stars-GG.apk"
 
 local Download = 0
