@@ -1223,7 +1223,7 @@ while true do
         table.insert(displayedResults, "『" .. resultIndex .. "』〘 " .. urls_name[index] .. " 〙")
     end
 
-    -- إضافة خيار الرجوع
+    -- إضافة خيار الرجوع 
     resultIndex = resultIndex + 1
     table.insert(displayedResults, "『" .. resultIndex .. "』〘 رجوع 〙")
 
