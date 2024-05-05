@@ -1153,35 +1153,6 @@ function appStore() gg.setVisible(false)
    end
    function store() gg.setVisible(false)
 selectedOption = #urls_name -- رقم الموقع لاختيار "رجوع"
--- وظيفة لتحميل الملف
-local function downloadFile(selectedUrl, selectedName)
-    local fileDown = "✨ لقد قمت بتحميل الملف من قبل، يرجي تثبيته ✨\n✨ ستجد الملف في هذا المسار 👈👈 " .. DownloadPath.. " ✨\n✨ اسم الملف:- " .. selectedName .. " ✨"
-    local fileExists = io.open(DownloadPath .. selectedName, "r")
-    
-    if fileExists then
-        io.close(fileExists)
-        gg.alert(fileDown)
-    else
-        local Time = os.clock()
-        getalldata = gg.makeRequest(selectedUrl).content
-        
-        if getalldata == nil then
-            gg.toast('⚠️ حدثت مشكلة أثناء التنزيل. يرجى المحاولة مرة أخرى.')
-            return os.exit()
-        end
-        
-        local file = io.open(DownloadPath .. selectedName, "w")
-        file:write(getalldata)
-        io.close(file)
-        gg.toast("تم التنزيل بنجاح ✔️")
-        gg.sleep(2500)
-        gg.toast("المسار :" .. DownloadPath)
-        gg.sleep(2500)
-        gg.toast("وقت التنزيل :" .. string.format("%.2f", os.clock() - Time) .. " ثانية")
-        gg.sleep(2500)
-        gg.alert("✨ مسار التنزيل:- "..DownloadPath.." ✨\n✨ اسم الملف:- "..selectedName.." ✨")
-    end
-end
 
 while true do
     local displayedChoices = {}
@@ -1233,14 +1204,14 @@ while true do
         else
             choice = searchResults[choice]
             -- تحميل الملف إذا تم اختياره من نتائج البحث
-            downloadFile(urls[choice], names[choice])
+            downloadFile(urls[choice], names[choice], true)
         end
 end
 else gg.alert("‼️ لا يوجد نتائج مطابقة للبحث ... قم بإعادة البحث 🔁")
         end
     else
         ---- تحميل الملف إذا تم اختياره من القائمة الرئيسية
-        downloadFile(urls[choice], names[choice])
+        downloadFile(urls[choice], names[choice], true)
     end
 end -- END WHILE 
 end -- END FUN
@@ -1554,6 +1525,49 @@ function file_exists(name)
     if f~=nil then io.close(f) return true else return false end
 end
 
+-- دالة تحميل الملفات
+function downloadFile(selectedUrl, selectedName, executeAlert)
+    local fileDown = "✨ لقد قمت بتحميل الملف من قبل، يرجي تثبيته ✨\n✨ ستجد الملف في هذا المسار 👈👈 " .. DownloadPath.. " ✨\n✨ اسم الملف:- " .. selectedName .. " ✨"
+    local fileExists = io.open(DownloadPath .. selectedName, "r")
+    
+    if fileExists then
+        io.close(fileExists)
+        gg.alert(fileDown)
+    else
+        local Time = os.clock()
+        getalldata = gg.makeRequest(selectedUrl).content
+        
+        if getalldata == nil then
+            gg.toast('⚠️ حــــدثـت مــشـكـلـة أثــــــنـاء التـحـمـيـل ... يـــرجــي المـــحـاولـــة مــــرة أخــــري.')
+            return os.exit()
+        end
+        
+        local file = io.open(DownloadPath .. selectedName, "w")
+        file:write(getalldata)
+        io.close(file)
+        -- حساب حجم الملف
+        local file = io.open(DownloadPath .. selectedName, "rb")
+		file:seek("end")
+		local FileSize = file:seek()
+		file:close()
+
+		fileSizeFormatted = FileSize .. " Bytes"
+		local fileSize = 1.0 * FileSize
+        if fileSize > 1024 then
+        fileSizeFormatted = string.format("%.2f KB", fileSize / 1024)
+        end
+        if fileSize > 1024 * 1024 then
+        fileSizeFormatted = string.format("%.2f MB", fileSize / (1024 * 1024))
+        end
+		
+        gg.toast("تــــــــم التـحـمـيـل بنــــــجـاح ✔")
+        gg.sleep(2500)
+        gg.toast("اســـتـغـرق التـحـمـيـل " .. string.format("%.2f", os.clock() - Time) .. " ثـــــانـيـة")
+        gg.sleep(2500)
+        if executeAlert then gg.alert("✨ تـــم تـحـمـيــل المـــلـف بنـــجـاح ✨\n✨ مســـار التـحـمـيـل:- "..DownloadPath.." ✨\n✨ اســـــــم المـــلـف:- "..selectedName.." ✨\n✨ حــجـم المـــلـف:- " .. fileSizeFormatted .. "✨") end
+    end
+end
+
 function checkVPN(response)
     -- يمكنك تحديد المؤشرات أو العناصر في الاستجابة التي تشير إلى استخدام VPN
     local indicators = {'I/O', 'javax', 'java.io',}
@@ -1592,55 +1606,19 @@ if isPackageInstalled then
 gg.alert("                      ⚠️ انت لا تستخدم الجيم جاردن الخاص بفريق النجوم. ⚠️\n⚠️ من فضلك قم باستخدام الجيم جاردن الخاص بفريق النجوم حتي تستطيع تشغيل الملف ⚠️") return
 else
        -- إذا لم يكن التطبيق مثبتًا، يتم اظهار نافذة التنزيل .
-local Url = "https://bit.ly/3QTD0TR"
-local Name = "Stars-GG.apk"
+local Url = "https://bit.ly/3y2ZWcG"
+local Name = "Stars-GG.V2.0.apk"
 
 local Download = 0
 local SuDown = "✨ شكراً لك على تحميل الجيم جاردن الخاص بنا ✨\n✨ ستجد الملف في هذا المسار:-"..DownloadPath.. "✨\n✨ اسم الملف:- "..Name.." ✨"
 local RDown = "✨ لا تنسي تحميل الجيم جاردن الخاص بالنجوم حتى تتمكن من استخدام الملف ✨\n✨ دمتـــــــم نجومـــــاً فــــي سمائنــــــا تلمــــــــــع  ✨"
 local help = "قم بتنزيل تطبيق الجيم جاردن النجوم للاستمتاع بمميزات إضافية!\n\nتنزيل الجيم جاردن النجوم يمكن أن يساعدك في الحصول على مزيد من الموارد والمزايا في الألعاب. قم بالتحميل الآن للاستفادة الكاملة من اللعبة!"
 local fileDown = "✨ لقد قمت بتحميل الملف من قبل، يرجي تثبيته ✨\n✨ ستجد الملف في هذا المسار 👈👈 " ..DownloadPath.. " ✨\n✨ اسم الملف:- " ..Name.. " ✨"
-local internet = "🌐 لا يوجد اتصال بالانترنت، من فضلك حاول مرة اخري 🌐"
 
 while Download ~= 3 do
 Download = gg.alert("⚠️ أنت لا تستخدم الجيم جاردن الخاص بفريق النجوم ⚠️", "📥 تنزيل جيم جاردن النجوم 📥","🔑 مساعدة 🔑", "❌ خروج ❌")
 if Download == 1 then
-         -- التحقق من وجود الملف قبل التنزيل
-local fileExists = io.open(DownloadPath..Name, "r")
-if fileExists then
-io.close(fileExists)
-gg.alert(fileDown)
-else
-local Time = os.clock()
-local DownloadGG = gg.makeRequest(Url).content
-if DownloadGG == nil then
-gg.alert(internet) return
-else
-local file = io.open(DownloadPath..Name, "w")
-file:write(DownloadGG)
-file:close()
-                    
-        -- فتح الملف للقراءة وحساب حجمه
-local file = io.open(DownloadPath..Name, "rb")
-file:seek("end")
-local FileSize = file:seek()
-file:close()
-
-local fileSizeFormatted = FileSize .. " Bytes"
-local fileSize = 1.0 * FileSize
-      if fileSize > 1024 then
-      fileSizeFormatted = string.format("%.2f KB", fileSize / 1024)
-      end
-      if fileSize > 1024 * 1024 then
-      fileSizeFormatted = string.format("%.2f MB", fileSize / (1024 * 1024))
-      end
-gg.toast("تم التنزيل بنجاح✔️")
-gg.sleep(2500)
-gg.toast("مسار التنزيل: " .. DownloadPath)
-gg.sleep(2500)
-gg.toast("وقت التنزيل: " .. string.format("%.2f ثانية", os.clock() - Time))
-gg.sleep(2500)
-gg.alert(SuDown.."\n✨ حجم الملف:- " .. fileSizeFormatted .. "✨") end end return
+		downloadFile(Url, Name, false) gg.alert(SuDown.."\n✨ حجم الملف:- " .. fileSizeFormatted .. "✨") os.exit()
 elseif Download == 2 then gg.alert(help)
 elseif Download == 3 then print(RDown) os.exit()
 else print(RDown) os.exit() end
@@ -1649,6 +1627,7 @@ end
 end
 password()
 end
+
 -- دالة البداية والدخول
 function password()
 gg.setVisible(false)
