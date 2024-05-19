@@ -1228,7 +1228,7 @@ if vipMenu == 2 then farmium() end --شراء قارورة بنفسجية
 if vipMenu == 3 then NOGOM('h 66 69 73 68 5F 6A 75 6D 70 5F 70 6F 77 65 72',1,nil,10000,'0',1,nil,1,1) NOGOM('h 66 69 73 68 5F 73 74 61 6D 69 6E 61 5F 67 72 6F 77 74 68',1,nil,10000,'0',1,nil,1,1) NOGOM('h 66 69 73 68 5F 6C 76 31',1,nil,10000,'h 66 69 73 68 5F 6C 76 33',1,nil,1,1) NOGOM('h 66 69 73 68 5F 6C 76 32',1,nil,10000,'h 66 69 73 68 5F 6C 76 33',1,nil,1,1) end --تثبيت صنارة الصيد بالمنتصف
 if vipMenu == 4 then NOGOM('h 6C 69 6D 69 74 5F 63 6F 6E 66 69 67 5F 6E 65 77',1,nil,10000,'0',1,nil,1,1) end --فاعلية التلقائي
 if vipMenu == 5 then NOGOM('500',64,nil,1000,'0',1,nil,1,1) NOGOM('1400',64,nil,1000,'0',1,nil,1,1) NOGOM('2500',64,nil,1000,'0',1,nil,1,1) NOGOM('2800',64,nil,1000,'0',1,nil,1,1) end --تخطي نقاط الجزيرة
-if vipMenu == 6 then NOGOM('75;90::5',64,'75',1000,'999999999',1,1,1,1) end --طاقة النافورة
+if vipMenu == 6 then NOGOM('75;90',64,'75',1000,'999999999',1,1,1,1) end --طاقة النافورة
 if vipMenu == 7 then HOME() end 
 ex(10)
 end
