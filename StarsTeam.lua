@@ -2,7 +2,7 @@ local path = gg.EXT_STORAGE
 local GameInfo=gg.getTargetInfo()
 local DownloadPath = path .. "/Download/"
 local treasureDuration = 432000 -- عدد الثواني لمدة 5 أيام
-local startTreasureLand = os.time({year=2024, month=2, day=5, hour=0, min=0, sec=0}) + treasureDuration
+local startTreasureLand = os.time({year=2024, month=6, day=8, hour=2, min=0, sec=0}) + treasureDuration
 local currenttime = os.time()
 local treasureLand = currenttime - startTreasureLand
 
