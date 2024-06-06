@@ -591,8 +591,8 @@ end
 end
 -------------الغاء تحميل المصانع---------------
 function factories() gg.setVisible(false)
-	local urls={'https://bit.ly/49Rw8gj','https://bit.ly/3U7K4wR',}
-	local files={GameInfo.dataDir .. '/Resources/scripts/production_house/controller.lua',GameInfo.dataDir .. '/Resources/scripts/production_house/materialCell.lua',}
+	local local urls={'https://bit.ly/3x60xtS','https://bit.ly/3KwDf3j','https://bit.ly/4c02KWM','https://bit.ly/4edoccs','https://bit.ly/4eajUTe','https://bit.ly/3yMD6q7',}
+	local files={GameInfo.dataDir .. '/Resources/scripts/production_house/constants.lua',GameInfo.dataDir .. '/Resources/scripts/production_house/controller.lua',GameInfo.dataDir .. '/Resources/scripts/production_house/launcher.lua',GameInfo.dataDir .. '/Resources/scripts/production_house/mainUI.lua',GameInfo.dataDir .. '/Resources/scripts/production_house/materialCell.lua',GameInfo.dataDir .. '/Resources/scripts/production_house/network.lua',}
 if not fileExist(GameInfo.dataDir .. "/Resources/scripts/vip/stars_factories.txt") then
     factory = gg.alert("⁉️ تـركـيـب مـــلـف إلغــاء تـحـمـيـل المــصانــع؟!.","✔ تــركـيـب ✔",""," رجـــوع ↩️")
     if factory == 1 then 
