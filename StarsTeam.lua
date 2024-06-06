@@ -1,4 +1,4 @@
-local path = gg.EXT_STORAGE
+local path = gg.EXT_STORAGE 
 local GameInfo=gg.getTargetInfo()
 local DownloadPath = path .. "/Download/"
 local treasureDuration = 604,800 -- عدد الثواني لمدة 7 أيام
