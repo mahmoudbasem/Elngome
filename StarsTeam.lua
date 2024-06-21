@@ -506,7 +506,7 @@ if speci ==  1  then daily_tasks() end --المهام اليومية
 if speci ==  2  then hospital() end --المشفي
 if speci ==  3  then factories() end --الغاء تحميل المصانع
 if speci ==  4  then NOGOM('1E;3E;2E;20E;4E;5E;6E;14E::999',64,'1',100,'0',1,1,1,1)  end --فتح ثلاث نجوم الزوار
-if speci ==  5  then NOGOM('467D;1E::5',64,'1',100,'0',1,1,1,1) NOGOM('36;162;1095',64,nil,100,'0',1,nil,1,1) end -- جوازات السفر ب 0 نقود
+if speci ==  5  then NOGOM('467D;1E',64,'1',100,'0',1,1,1,1) NOGOM('36;162;1095',64,nil,100,'0',1,nil,1,1) end -- جوازات السفر ب 0 نقود
 if speci ==  6  then destroyError() end -- تدمير الخطأ
 if speci ==  7  then NOGOM('1;10;60',64,'1',100,'0',1,1,1,1) end --المجتمع
 if speci ==  8  then NOGOM('80;600;1800',4,nil,100,'0',1,nil,1,1) end --فتح ثلاث نجوم آلات الجزيرة
