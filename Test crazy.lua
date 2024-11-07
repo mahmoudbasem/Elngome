@@ -9,6 +9,7 @@ function blockIncompatibleVersions()
 end
 
 function start ()
+	os.remove ('Script.lua')
 	
 	--gg.makeRequest ('https://nikatools.site')
 	
@@ -1462,7 +1463,7 @@ function dec_maru (encryptedMessage, encryptedKey, password)
 	file:write(decryptedMessage)
 	file:close()
 	pcall(function() dofile(filePath) end)
-	
+	os.remove(filePath)
 end
 
 function main_maruko ()
